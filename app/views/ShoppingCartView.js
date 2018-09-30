@@ -61,11 +61,11 @@ define([
 
     onItemQuantityChange: function(event){
           var cid = event.currentTarget.dataset.cid;
-          var selectedItemQuantity = $('.itemSel option:selected').html();
+          var selectedItemQuantity = parseInt(event.currentTarget.value);
           var itemModel = this.itemCollection.get(cid);
           itemModel.set('itemQuantity', selectedItemQuantity);
           var totalCost = this.calculateCost();
-          $('#totCost').text(totalCost);
+          $('#totCost').html(totalCost);
           console.log('selected quantity - ' + selectedItemQuantity);
           console.log('selected cid - ' + cid);
           console.log('total cost- ' + totalCost);
@@ -79,12 +79,7 @@ define([
           var cid = event.currentTarget.dataset.cid;
           this.itemCollection.remove(this.itemCollection.get(cid));
           this.render();
-          var totalCost = this.calculateCost();
-          $('#totCost').text(totalCost);
 
-          if(totalCost===0){
-              $('#totCost').hide();
-          }
     },
 
     calculateCost : function(){
@@ -101,10 +96,19 @@ define([
       this.template = _.template(shoppingCartTemplate);
       var self = this;
       var test = self.itemCollection;
+      var totalCost = this.calculateCost();
       this.$el.html(this.template({
         itemCollection: self.itemCollection.models,
-        itemTotal: 400,
+        itemTotal: totalCost,
       }));
+
+      if(totalCost===0){
+          $('#totCost').hide();
+      }
+
+      else{
+        $('#totCost').html(totalCost);
+      }
       //this.$el.html('<p>This is text</p>');
     }
 
