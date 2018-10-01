@@ -6,7 +6,7 @@ gulp.task('styles', function () {
 	gulp.src('./scss/main.scss')
 		.pipe(sass())
 		.pipe(gulp.dest('./css'))
-		.pipe(browserSync.reload({stream:true}));
+		.pipe(browserSync.stream());
 });
 
 gulp.task('serve', function(){
@@ -17,7 +17,7 @@ gulp.task('serve', function(){
 		}
 	});
 
-	gulp.watch('./scss/*.scss', ['styles']);
+	gulp.watch('./scss/components/*.scss', ['styles']);
 	gulp.watch('./html/*.html').on('change', browserSync.reload);
 	gulp.watch('./js/*.js').on('change', browserSync.reload);
 });

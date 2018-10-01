@@ -1,0 +1,28 @@
+select {
+  width: 100px; }
+
+header .navbar {
+  background-color: #818990; }
+
+header .count {
+  margin-left: 5px; }
+
+header .nav-link {
+  font-size: 20px;
+  margin: 0 50px 0 50px; }
+
+footer {
+  background-color: #818990;
+  padding: 10px; }
+  footer .footer-wrapper {
+    bottom: 5px;
+    margin: 20px 50px 0 10px; }
+
+.products {
+  margin: 40px auto; }
+  .products img {
+    width: 90%;
+    text-align: center; }
+
+.product-details .description {
+  margin-top: 70px; }

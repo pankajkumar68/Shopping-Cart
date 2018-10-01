@@ -2,13 +2,19 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/ShoppingCartView'
-], function($, _, Backbone, ShoppingCartView) {
+  'views/headerView',
+  'views/footerView',
+  'views/cartView',
+  'routers/router'
+], function($, _, Backbone, HeaderView, FooterView, CartView) {
 
     var initialize = function() {
-        console.log('inside initialize');
-        var shoppingCartView = new ShoppingCartView();
-        shoppingCartView.render();
+        Backbone.history.start({
+          pushState: true
+        });
+        HeaderView.render(0);
+        FooterView.render();
+        //Backbone.history.navigate('products', {trigger:true});
     };
 
     return {

@@ -4,14 +4,15 @@ require.config({
     underscore: '../lib/underscore-min',
     backbone: '../lib/backbone-min',
     templates: '../templates',
-    text: '../lib/text',
+    text: '../lib/text'
+
 
 
   }
 });
 
 require([
-  
+
   'app',
 ], function(App){
   App.initialize();

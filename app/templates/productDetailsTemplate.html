@@ -1,0 +1,31 @@
+
+<div class="product-details container">
+  <div class="row">
+    <div class="col-lg-5">
+        <img src="<%=product.get('productImage')%>" alt="<%=product.get('productName')%>">
+    </div>
+
+    <div class="col-lg-7 description">
+      <h2><%=product.get('productName')%> </h2>
+      <p><%=product.get('productDescription')%></p>
+      <div>Price - <%=product.get('productPrice')%></div>
+      <div>
+        <label for="productQuantity">Quantity - </label>
+        <select id="productQuantity" class="product-select">
+            <option value=1 <%if(product.get('productQuantity')===1){%>selected<%}%> >1</option>
+            <option value=2 <%if(product.get('productQuantity')===2){%>selected<%}%> >2</option>
+            <option value=3 <%if(product.get('productQuantity')===3){%>selected<%}%> >3</option>
+            <option value=4 <%if(product.get('productQuantity')===4){%>selected<%}%> >4</option>
+            <option value=5 <%if(product.get('productQuantity')===5){%>selected<%}%> >5</option>
+        </select>
+      </div>
+
+      <button id="addToCart" type="button" data-cid= "<%=product.cid%>" class="btn-primary">Add To Cart</button>
+      <a class="back" href="#">Back To Products</a>
+      <div class="success-message d-none">
+          <h4><em>Product successfully added to cart!!</em></h4>
+      </div>
+    </div>
+  </div>
+
+</div>

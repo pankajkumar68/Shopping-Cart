@@ -1,0 +1,46 @@
+
+<div class="shoppingCart container">
+  <br/>
+  <div class="row col-lg-12">
+    <h1>Shopping cart</h1>
+  </div>
+  <br/><br/>
+  <%if(cartCollection.length>0){ %>
+    <%_.forEach(cartCollection, function (cartModel) {%>
+    <div class="row col-lg-12">
+      <div class="col-lg-2">
+        <img src="<%=cartModel.get('productImage')%>" alt="" height="100" width="100">
+      </div>
+      <div class="itemDetails col-lg-10">
+        <%=cartModel.get('productName')%> <br/>
+        Price - <%=cartModel.get('productPrice')%><br/>
+        Quantity -
+        <select class="itemSel" data-cid="<%=cartModel.cid%>">
+          <option value=1 <%if(cartModel.get('productQuantity')===1){%>selected<%}%> >1</option>
+          <option value=2 <%if(cartModel.get('productQuantity')===2){%>selected<%}%> >2</option>
+          <option value=3 <%if(cartModel.get('productQuantity')===3){%>selected<%}%> >3</option>
+          <option value=4 <%if(cartModel.get('productQuantity')===4){%>selected<%}%> >4</option>
+          <option value=5 <%if(cartModel.get('productQuantity')===5){%>selected<%}%> >5</option>
+      </select>
+      <br/>
+        <button id="remove" type="button" data-cid= "<%=cartModel.cid%>" class="btn-danger">Remove</button>
+      </div>
+      </div>
+      <hr>
+    <%})%>
+
+  <div class="row col-lg-12">
+    <div class="col-lg-4 offset-lg-2 ">
+      <h3><i>Total cost - <span id="totCost"><%=totalCost%></span></i></h3>
+    </div>
+    <div class="col-lg-4 pull-right">
+      <button type="button" class="btn-primary">Proceed To Checkout</button>
+    </div>
+  </div>
+  <%} else {%>
+    <div>
+        <h4>Your shopping cart is empty!!</h4><br/>
+        <a href="javascript:void(0);" class="back">Click here to continue shopping</a>
+    </div>
+  <%}%>
+</div>
