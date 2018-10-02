@@ -1,7 +1,19 @@
 $white: #fff;
 $black: #000;
 $grey-dark: #818990;
+$primary-button: #17a2b8;
 
+main#page {
+  min-height: 90vh;
+  position: relative;
+}
 select {
   width: 100px;
+  margin: 10px 0;
+}
+.btn-primary {
+  padding: 10px 30px;
+  margin-top: 10px;
+  background-color: $primary-button;
+  border: none;
 }
