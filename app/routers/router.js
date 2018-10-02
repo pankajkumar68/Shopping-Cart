@@ -17,9 +17,9 @@ define([
         ProductsView.render();
       },
 
-      products: function(){
-        ProductsView.render();
-      }
+      // products: function(){
+      //   ProductsView.render();
+      // }
     });
 
     return new Router();

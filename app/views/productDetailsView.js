@@ -13,7 +13,10 @@ define([
       el: $('#page'),
 
       initialize: function(){
-
+        // var self = this;
+        // Backbone.Events.on('renderProductDetails', function(product){
+        //   self.render(product);
+        // });
       },
 
       events: {
@@ -33,7 +36,8 @@ define([
         if(event){
             event.preventDefault();
         }
-        Backbone.history.navigate('/products', {trigger: true});
+        Backbone.Events.trigger('renderProducts');
+        //Backbone.history.navigate('/products', {trigger: true});
 
       },
 
@@ -55,11 +59,17 @@ define([
             'productPrice': this.product.get('productPrice'),
             'productImage': this.product.get('productImage'),
           });
+          var model = CartCollection.findWhere({'productId': this.product.get('productId')});
 
-          CartCollection.add(cartModel);
-          Backbone.history.navigate('/products', {trigger: true});
+          if(model){
+              model.set('productQuantity', model.get('productQuantity')+this.product.get('productQuantity'));
+          }
+          else{
+              CartCollection.add(cartModel);
+          }
+
+          Backbone.Events.trigger('renderProducts');
           Backbone.Events.trigger('updateCartCount', {productCount: this.countCartProducts()});
-          console.dir(CartCollection);
 
       },
 

@@ -5,16 +5,20 @@ define([
   'views/headerView',
   'views/footerView',
   'views/cartView',
+  'views/productsView',
+  'views/productDetailsView',
   'routers/router'
-], function($, _, Backbone, HeaderView, FooterView, CartView) {
+], function($, _, Backbone, HeaderView, FooterView, CartView, ProductsView, ProductDetailsView) {
 
     var initialize = function() {
-        Backbone.history.start({
-          pushState: true
-        });
+
         HeaderView.render(0);
         FooterView.render();
-        //Backbone.history.navigate('products', {trigger:true});
+        ProductsView.render();
+        // Backbone.history.start({
+        //   pushState: true
+        // });
+        //Backbone.history.navigate('products', { trigger:true});
     };
 
     return {

@@ -14,7 +14,8 @@ define([
         this.template = _.template(headerTemplate);
         var self = this;
         Backbone.Events.on('updateCartCount', function(obj){
-          self.render(obj.productCount);
+          $('.count').html(obj.productCount);
+          //self.render(obj.productCount);
         });
     },
 
@@ -29,14 +30,14 @@ define([
       if(event){
           event.preventDefault();
       }
-      Backbone.history.navigate('/products', {trigger: true});
+      Backbone.Events.trigger('renderProducts');
     },
 
     proceedToCart: function(event){
         if(event){
             event.preventDefault();
         }
-        Backbone.history.navigate('/cart', {trigger: true});
+        //Backbone.history.navigate('/cart', {trigger: true});
         Backbone.Events.trigger('renderCartView');
     },
 

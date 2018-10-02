@@ -3,10 +3,10 @@ define([
   'underscore',
   'backbone',
   'collections/productCollection',
-  'text!/app/templates/productsTemplate.html',
-  'views/productDetailsView'
+  'views/productDetailsView',
+  'text!/app/templates/productsTemplate.html'
 
-], function($, _, Backbone, ProductCollection, productsTemplate, ProductDetailsView) {
+], function($, _, Backbone, ProductCollection, ProductDetailsView, productsTemplate) {
 
     var ProductsView = Backbone.View.extend({
 
@@ -15,6 +15,10 @@ define([
     initialize: function(){
          this.productCollection = new ProductCollection();
          //this.productDetailsView = new ProductDetailsView();
+         var self = this;
+         Backbone.Events.on('renderProducts', function(){
+           self.render();
+         });
 
     },
 
@@ -29,7 +33,9 @@ define([
 
         var cid = event.currentTarget.dataset.cid;
         ProductDetailsView.render(this.productCollection.get(cid));
-        Backbone.history.navigate('/productdetails', {trigger: true});
+        //Backbone.history.navigate('/productdetails', {trigger: true});
+        var product  = this.productCollection.get(cid);
+        //Backbone.Events.trigger('renderProductDetails', { product: product});
         console.log('cid - ' + cid);
 
     },
