@@ -8,6 +8,7 @@ define([
 
     var ProductCollection = Backbone.Collection.extend({
         model: ProductModel,
+        
         url: 'localdata/products.json',
 
         parse: function(response) {

@@ -12,17 +12,15 @@ define([
 
     var initialize = function() {
 
+        // Start rendering header, footer and the products view
         HeaderView.render(0);
         FooterView.render();
         ProductsView.render();
-        // Backbone.history.start({
-        //   pushState: true
-        // });
-        //Backbone.history.navigate('products', { trigger:true});
+
     };
 
     return {
-      initialize: initialize
+        initialize: initialize
     };
 
   });

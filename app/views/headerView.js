@@ -6,17 +6,25 @@ define([
 
 ], function($, _, Backbone, headerTemplate) {
 
-    var HeaderView = Backbone.View.extend({
+  var HeaderView = Backbone.View.extend({
 
     el: $('header'),
 
-    initialize: function(){
-        this.template = _.template(headerTemplate);
-        var self = this;
-        Backbone.Events.on('updateCartCount', function(obj){
-          $('.count').html(obj.productCount);
-          //self.render(obj.productCount);
-        });
+    initialize: function() {
+      this.template = _.template(headerTemplate);
+      var self = this;
+
+      // Event listener to update count in header
+      Backbone.Events.on('updateCartCount', function(obj) {
+        $('.count').html(obj.productCount);
+      });
+    },
+
+    //render function for header
+    render: function(productCount) {
+      this.$el.html(this.template({
+        productCount: productCount
+      }));
     },
 
     events: {
@@ -26,30 +34,25 @@ define([
 
     },
 
-    openProductsPage: function(event){
-      if(event){
-          event.preventDefault();
+    // Products menu click event handler
+    openProductsPage: function(event) {
+      if (event) {
+        event.preventDefault();
       }
       Backbone.Events.trigger('renderProducts');
     },
 
-    proceedToCart: function(event){
-        if(event){
-            event.preventDefault();
-        }
-        //Backbone.history.navigate('/cart', {trigger: true});
-        Backbone.Events.trigger('renderCartView');
-    },
-
-    render: function(productCount){
-      this.$el.html(this.template({
-        productCount: productCount
-
-      }));
+    // Event handler for shoopint cart button in header
+    proceedToCart: function(event) {
+      if (event) {
+        event.preventDefault();
+      }
+    
+      Backbone.Events.trigger('renderCartView');
     }
 
-    });
+  });
 
-    return new HeaderView();
+  return new HeaderView();
 
 });

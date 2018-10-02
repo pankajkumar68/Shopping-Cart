@@ -12,7 +12,7 @@
         <img src="<%=cartModel.get('productImage')%>" alt="<%=cartModel.get('productName')%>">
       </div>
       <div class="itemDetails col-lg-9">
-        <h3><%=cartModel.get('productName')%></h3>
+        <h4><%=cartModel.get('productName')%></h4>
         <div>Price - <%=cartModel.get('productPrice')%></div>
         <label for="itemQuant">Quantity - </label>
         <select class="itemSel" id="itemQuant" data-cid="<%=cartModel.cid%>">
@@ -33,7 +33,7 @@
     <div class="col-lg-4 offset-lg-2 ">
       <h3><i>Total cost - <span id="totCost"><%=totalCost%></span></i></h3>
     </div>
-    <div class="col-lg-4 pull-right">
+    <div class="col-lg-4 pd-b-3">
       <button type="button" class="btn-primary">Proceed To Checkout</button>
     </div>
   </div>

@@ -1,3 +1,5 @@
+// Configure paths of all libraries used.
+
 require.config({
   paths: {
     jquery: '../lib/jquery.min',
@@ -5,15 +7,13 @@ require.config({
     backbone: '../lib/backbone-min',
     templates: '../templates',
     text: '../lib/text'
-
-
-
   }
 });
 
-require([
+// start executing the app.js file
 
+require([
   'app',
-], function(App){
+], function(App) {
   App.initialize();
 });

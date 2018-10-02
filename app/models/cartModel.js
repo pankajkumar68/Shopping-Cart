@@ -5,13 +5,13 @@ define([
 
 ], function($, _, Backbone) {
 
-  var itemModel = Backbone.Model.extend({
+  var CartModel = Backbone.Model.extend({
+
     defaults: {
-
       'productQuantity': 1,
-
     }
+    
   });
 
-  return itemModel;
+  return CartModel;
 });

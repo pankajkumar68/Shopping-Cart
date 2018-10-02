@@ -6,9 +6,11 @@ define([
 ], function($, _, Backbone){
 
     var productModel = Backbone.Model.extend({
+
         defaults: {
           'productQuantity': 1
         }
+        
     });
 
     return productModel;
